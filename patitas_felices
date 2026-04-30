@@ -1,0 +1,66 @@
+ def mostrar_menu():
+    print("\n---  REFUGIO DE ANIMALES 'PATITAS FELICES' ---")
+    print("1. Ver estado del refugio")
+    print("2. Consultar capacidad disponible")
+    print("3. Cambiar nombre del refugio")
+    print("4. Registrar una adopción")
+    print("5. Calcular costo de vacunación con IVA")
+    print("6. Salir")
+ 
+def ejecutar_asistente():
+    refugio = "Patitas Felices"
+    animales_adoptados = 0
+    continuar = True
+ 
+    print(" ¡Bienvenido al Sistema de Gestión del Refugio de Animales! ")
+    print("Aquí podés ayudar a encontrar hogares para nuestros amigos peludos.")
+ 
+    while continuar:
+        mostrar_menu()
+        opcion = input("Seleccione una opción (1-6): ")
+ 
+        if opcion == "1":
+            print(f" El refugio '{refugio}' está operativo.")
+            print(" Perros disponibles: 12  |   Gatos disponibles: 8  |   Conejos: 3")
+ 
+        elif opcion == "2":
+            capacidad_total = 40
+            ocupados = 23
+            disponibles = capacidad_total - ocupados
+            print(f" Capacidad total del refugio: {capacidad_total} animales")
+            print(f" Lugares ocupados: {ocupados}")
+            print(f" Lugares disponibles: {disponibles}")
+ 
+        elif opcion == "3":
+            nuevo_nombre = input("Ingresá el nuevo nombre del refugio: ")
+            refugio = nuevo_nombre
+            print(f" Nombre actualizado: '{refugio}'")
+ 
+        elif opcion == "4":
+            nombre_animal = input("Ingresá el nombre del animal adoptado: ")
+            animales_adoptados += 1
+            print(f"} ¡Felicitaciones! '{nombre_animal}' fue adoptado con éxito.")
+            print(f" Total de adopciones registradas hoy: {animales_adoptados}")
+ 
+        elif opcion == "5":
+            try:
+                precio_base = float(input("Ingresá el costo base de vacunación ($): "))
+                iva = 0.21
+                total = precio_base * (1 + iva)
+                print(f" Costo base:   ${precio_base:.2f}")
+                print(f" IVA (21%):     ${precio_base * iva:.2f}")
+                print(f" Total con IVA: ${total:.2f}")
+            except ValueError:
+                print(" Por favor ingresá un número válido.")
+ 
+        elif opcion == "6":
+            print(f" Cerrando el sistema del refugio '{refugio}'.")
+            print(f" Resumen de la sesión: {animales_adoptados} adopción/es registrada/s.")
+            print("¡Gracias por ayudar a nuestros amigos peludos! ")
+            continuar = False
+ 
+        else:
+            print(" Opción no válida. Intenta de nuevo.")
+ 
+# Iniciar el programa
+ejecutar_asistente()
